@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Recent Texes
+    = bootstrap_assets
+
+%body
+  .container
+    .row
+      .span6.offset3
+        .hero-unit
+          %h1 Pieces of Tex(t)
+          %p Cooler than tweets, fresher than SMS.
+    .row
+      .span3.offset1
+        %h2 Navbar
+        %ul
+          %li
+            %a{href: '/'} Stream
+          %li
+            %a{href: '/hashtags'} Hashtags
+      .span4
+        = yield
+      .span4
+        %h3 Random quote
+        %blockquote
+          %pre= @quote
+          %small
+            %a{href: @quote_url}
+              = @quote_url
+        %small This is just a dirty trick to make things looks a little bit less static :)
+

@@ -28,9 +28,11 @@ require 'bundler/setup'
 require 'json'
 require 'rest_client'
 
+TEX_HOST = ENV['TEX_API_HOST']
+TEX_HOST ||= 'localhost'
 
 class TexClient
-  URL = 'http://localhost/1'.freeze
+  URL = "http://#{TEX_HOST}/1".freeze
 
   class << self
     def url(method)

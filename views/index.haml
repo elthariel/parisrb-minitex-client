@@ -1,16 +1,9 @@
-!!!
-%html
-  %head
-    %title Recent Texes
+%h1 Last texes
+.texes
+  - @texes.each do |t|
+    .well
+      = t['message']
 
-%body
-  %h1 Recent Texes
-  .texes
-    %ul
-      - @texes.each do |t|
-        %li.tex
-          = t['message']
-
-  %form{action: '/tex', method: :post}
-    %input{type: :text, name: :message}
-    %input{type: :submit, value: 'Commit'}
+%form.form-inline{action: '/tex', method: :post}
+  %input.span3{type: :text, name: :message, placeholder: "Type a 142 long message (or less)"}
+  %input.btn.btn-primary{type: :submit, value: 'Post Tex !'}

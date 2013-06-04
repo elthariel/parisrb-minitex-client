@@ -28,12 +28,23 @@ require 'bundler/setup'
 Bundler.require(:default)
 require './api_client'
 
+register Sinatra::Twitter::Bootstrap::Assets
+
+before do
+  @quote = RestClient.get('http://www.iheartquotes.com/api/v1/random').gsub(/\[.+\]/, '')
+  @quote =~ /(http:\/\/.+)/
+  @quote_url = $1
+  @quote.gsub!(/(http:\/\/.+)/, '')
+end
 
 get '/' do
   @texes = TexClient.texes['response']
   haml :index
 end
 
+get '/hashtags/' do
+  redirect to('/hashtags')
+end
 get '/hashtags' do
   @hashtags = TexClient.hashtags['response']
   haml :hashtags
