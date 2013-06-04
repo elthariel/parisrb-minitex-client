@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Recent Texes
+
+%body
+  %h1 Recent Texes
+  .texes
+    %ul
+      - @texes.each do |t|
+        %li.tex
+          = t['message']
+
+  %form{action: '/tex', method: :post}
+    %input{type: :text, name: :message}
+    %input{type: :submit, value: 'Commit'}

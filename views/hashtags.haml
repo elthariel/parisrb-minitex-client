@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title Recent HashTags
+
+%body
+  %h1 Recent HashTags
+  .hashtags
+    %ul
+      - @hashtags.each do |t|
+        %li.hashtag
+          %a{href: "/hashtag/#{t['name']}"}= t['name']
